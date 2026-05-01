@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Costa España</title>
+  <style>
+    :root {
+      --bg: #f4f1ec;
+      --card: #ffffff;
+      --text: #232323;
+      --muted: #6f6a63;
+      --line: #e2ddd5;
+      --accent: #8a5a34;
+      --accent-dark: #5f3a20;
+      --accent-soft: #eadccd;
+      --green: #5f7f67;
+      --shadow: 0 18px 40px rgba(40, 30, 20, 0.08);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(circle at top left, #fff8ef 0, var(--bg) 42%, #eee7dc 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    header {
+      min-height: 72vh;
+      padding: 32px 7vw 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: rgba(138, 90, 52, 0.09);
+      right: -160px;
+      top: -120px;
+      z-index: 0;
+    }
+
+    .nav {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand { display: flex; flex-direction: column; gap: 2px; }
+    .brand strong { font-size: 1.1rem; letter-spacing: 0.02em; }
+    .brand span { color: var(--muted); font-size: 0.86rem; }
+
+    .nav-links { display: flex; gap: 18px; flex-wrap: wrap; font-size: 0.92rem; }
+    .nav-links a { color: var(--text); text-decoration: none; opacity: 0.76; }
+    .nav-links a:hover { opacity: 1; }
+
+    .hero { position: relative; z-index: 1; max-width: 940px; padding-top: 72px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      color: var(--accent-dark);
+      font-weight: 600;
+      font-size: 0.86rem;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 7vw, 6.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      margin: 0 0 24px;
+      max-width: 850px;
+    }
+
+    .hero p {
+      font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+      color: var(--muted);
+      max-width: 710px;
+      margin: 0 0 32px;
+    }
+
+    .actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary { background: var(--accent); color: #fff; box-shadow: 0 12px 28px rgba(138, 90, 52, .24); }
+    .btn.secondary { background: rgba(255,255,255,.76); color: var(--accent-dark); border: 1px solid var(--line); }
+
+    main { padding: 0 7vw 80px; }
+    section { margin: 42px auto; max-width: 1180px; }
+
+    .intro-card {
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: clamp(24px, 4vw, 42px);
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .intro-card h2, .section-title h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      letter-spacing: -0.035em;
+    }
+
+    .intro-card p, .section-title p, .card p { color: var(--muted); margin: 0; }
+
+    .note {
+      background: var(--accent-soft);
+      border-radius: 18px;
+      padding: 18px;
+      color: var(--accent-dark);
+      font-size: .96rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+      min-height: 190px;
+      box-shadow: 0 10px 24px rgba(40, 30, 20, .05);
+    }
+
+    .card .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 1.3rem;
+    }
+
+    .card h3 { margin: 0 0 10px; font-size: 1.1rem; letter-spacing: -0.02em; }
+
+    .visuals {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .image-placeholder {
+      min-height: 260px;
+      background: linear-gradient(135deg, #d8c7b6, #f4efe8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--accent-dark);
+      font-weight: 700;
+      padding: 20px;
+    }
+
+    .project-content { padding: 22px; }
+    .project-content h3 { margin: 0 0 10px; font-size: 1.35rem; }
+
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+    .tag {
+      font-size: .78rem;
+      font-weight: 700;
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: #f5f1eb;
+      color: var(--muted);
+      border: 1px solid var(--line);
+    }
+    .tag.green { background: #edf3ee; color: var(--green); }
+
+    .form-panel {
+      background: var(--accent-dark);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: clamp(26px, 4vw, 42px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .form-panel p { color: rgba(255,255,255,.76); margin: 0; }
+    .form-panel .btn { justify-self: start; background: #fff; color: var(--accent-dark); }
+
+    footer {
+      padding: 32px 7vw 48px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: .92rem;
+    }
+
+    @media (max-width: 920px) {
+      .intro-card, .form-panel, .visuals { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 620px) {
+      header { min-height: auto; }
+      .nav { align-items: flex-start; flex-direction: column; }
+      .nav-links { display: none; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand">
+        <strong>Portal Costa España</strong>
+        <span>Ideias, participação e convivência</span>
+      </div>
+      <div class="nav-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#ideias">Ideias Visuais</a>
+        <a href="#participar">Participar</a>
+        <a href="#prioridades">Prioridades</a>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="eyebrow">Iniciativa colaborativa de moradores</div>
+      <h1>Um espaço para imaginar, organizar e melhorar o nosso condomínio.</h1>
+      <p>Um portal simples para reunir ideias, visualizar possibilidades de melhoria e fortalecer a participação dos moradores do Costa España de forma construtiva.</p>
+      <div class="actions">
+        <a class="btn primary" href="#ideias">Ver ideias visuais</a>
+        <a class="btn secondary" href="#participar">Enviar sugestão</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="sobre">
+      <div class="intro-card">
+        <div>
+          <h2>Sobre este portal</h2>
+          <p>O Portal Costa España nasceu de uma iniciativa espontânea de morador, com o objetivo de organizar ideias, facilitar a participação e contribuir de forma construtiva com a vida em condomínio.</p>
+          <br />
+          <p>Este espaço não substitui os canais oficiais da administração, não representa decisões formais e não tem caráter deliberativo. Sua finalidade é apoiar o diálogo entre moradores, reunir sugestões, apresentar possibilidades de melhoria e tornar algumas ideias mais fáceis de visualizar.</p>
+        </div>
+        <div class="note">
+          Todas as propostas aqui apresentadas devem ser entendidas como contribuições colaborativas, sujeitas à avaliação da administração, dos condôminos e, quando necessário, à aprovação em assembleia.
+        </div>
+      </div>
+    </section>
+
+    <section id="prioridades">
+      <div class="section-title">
+        <h2>Como este portal pode ajudar</h2>
+        <p>O objetivo é transformar percepções soltas em informações mais claras, organizadas e úteis para todos.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="icon">💡</div>
+          <h3>Ideias de melhoria</h3>
+          <p>Registrar propostas para áreas comuns, convivência, segurança, comunicação e valorização do prédio.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🖼️</div>
+          <h3>Visualização com IA</h3>
+          <p>Usar imagens conceituais para facilitar a compreensão de possibilidades antes de qualquer decisão formal.</p>
+        </article>
+        <article class="card">
+          <div class="icon">📊</div>
+          <h3>Enquetes simples</h3>
+          <p>Medir interesse dos moradores em temas específicos sem transformar o grupo de WhatsApp em debate infinito.</p>
+        </article>
+        <article class="card">
+          <div class="icon">🤝</div>
+          <h3>Apoio à gestão</h3>
+          <p>Organizar informações de forma colaborativa, respeitando os canais oficiais e o processo decisório do condomínio.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="ideias">
+      <div class="section-title">
+        <h2>Ideias visuais para o Costa España</h2>
+        <p>Estudos conceituais feitos com apoio de inteligência artificial para imaginar usos melhores para espaços do prédio.</p>
+      </div>
+
+      <div class="visuals">
+        <article class="project-card">
+          <div class="image-placeholder">Adicionar imagem: Antes/depois da brinquedoteca ou livraria infantil</div>
+          <div class="project-content">
+            <h3>Brinquedoteca / Livraria Infantil</h3>
+            <p>Proposta conceitual para transformar uma área pouco utilizada em um espaço acolhedor, seguro e de baixo custo para crianças e famílias.</p>
+            <div class="tags">
+              <span class="tag green">Ideia conceitual</span>
+              <span class="tag">Convivência</span>
+              <span class="tag">Famílias</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="image-placeholder">Adicionar imagem: Outra melhoria visual do condomínio</div>
+          <div class="project-content">
+            <h3>Nova possibilidade para área comum</h3>
+            <p>Espaço reservado para novas propostas visuais, sempre com indicação de que são imagens conceituais e não projetos aprovados.</p>
+            <div class="tags">
+              <span class="tag green">Em estudo</span>
+              <span class="tag">Valorização</span>
+              <span class="tag">Uso comum</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="participar">
+      <div class="form-panel">
+        <div>
+          <h2>Participe com sugestões</h2>
+          <p>Moradores podem contribuir com ideias, percepções e prioridades. O objetivo é reunir sugestões de forma organizada e respeitosa.</p>
+        </div>
+        <a class="btn" href="#">Inserir link do Google Forms</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Portal colaborativo criado por iniciativa de morador. Este espaço não substitui a administração, o síndico, a convenção, o regimento interno ou as deliberações formais em assembleia.
+  </footer>
+</body>
+</html>
