@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leitura preliminar das despesas | Portal Costa España</title>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --surface: rgba(255,255,255,.82);
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(0,0,0,.08);
+      --blue-soft: #eaf4ff;
+      --green-soft: #edf7f1;
+      --shadow: 0 20px 60px rgba(0,0,0,.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(circle at 50% -10%, #fff 0 18%, rgba(245,245,247,.96) 42%, #eef2f5 100%);
+      color: var(--text);
+      line-height: 1.58;
+      -webkit-font-smoothing: antialiased;
+    }
+    .shell { width: min(940px, calc(100% - 38px)); margin: 0 auto; }
+    header { padding: 28px 0 18px; }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 12px 0;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    a { color: inherit; }
+    .back {
+      display: inline-flex;
+      text-decoration: none;
+      font-weight: 700;
+      color: #07569b;
+      background: var(--blue-soft);
+      padding: 9px 13px;
+      border-radius: 999px;
+    }
+    .hero { padding: 46px 0 24px; }
+    .eyebrow {
+      display: inline-flex;
+      margin-bottom: 16px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: #07569b;
+      background: var(--blue-soft);
+      font-size: .78rem;
+      font-weight: 760;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.5rem, 7vw, 5.2rem);
+      line-height: .95;
+      letter-spacing: -.065em;
+      font-weight: 780;
+    }
+    .lead {
+      margin: 22px 0 0;
+      max-width: 790px;
+      color: var(--muted);
+      font-size: clamp(1.12rem, 2vw, 1.35rem);
+      letter-spacing: -.02em;
+      line-height: 1.35;
+    }
+    article {
+      margin: 18px 0 70px;
+      padding: clamp(24px, 5vw, 46px);
+      border-radius: 32px;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.88);
+      box-shadow: var(--shadow);
+    }
+    h2 {
+      margin: 36px 0 10px;
+      font-size: clamp(1.45rem, 3vw, 2.1rem);
+      line-height: 1.12;
+      letter-spacing: -.045em;
+    }
+    h2:first-child { margin-top: 0; }
+    p { margin: 0 0 16px; font-size: 1.05rem; }
+    ul { margin: 10px 0 20px; padding-left: 22px; }
+    li { margin: 8px 0; font-size: 1.05rem; }
+    .callout {
+      margin: 28px 0;
+      padding: 20px 22px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(15,47,58,.96), rgba(6,73,96,.92));
+      color: #fff;
+    }
+    .callout p { color: rgba(255,255,255,.86); margin: 0; }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 22px 0 28px;
+    }
+    .metric {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 18px;
+    }
+    .metric strong {
+      display: block;
+      font-size: 1.25rem;
+      letter-spacing: -.04em;
+      margin-bottom: 4px;
+    }
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.35;
+    }
+    .note {
+      margin: 28px 0 0;
+      padding: 18px 20px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: rgba(29,29,31,.72);
+    }
+    .question {
+      margin: 16px 0;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+    }
+    .question strong {
+      display: block;
+      margin-bottom: 6px;
+      letter-spacing: -.02em;
+    }
+    footer {
+      padding: 28px 0 42px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    @media (max-width: 780px) {
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell">
+    <div class="top">
+      <a class="back" href="../index.html#textos">← Voltar ao portal</a>
+      <span>Portal Costa España</span>
+    </div>
+    <div class="hero">
+      <span class="eyebrow">Material de apoio • despesas condominiais • 01/05/2026</span>
+      <h1>Leitura preliminar das despesas do condomínio</h1>
+      <p class="lead">Um guia didático para ajudar proprietários a entenderem a composição da conta condominial e transformarem números em pautas construtivas de assembleia.</p>
+    </div>
+  </header>
+
+  <main class="shell">
+    <article>
+      <h2>Finalidade deste material</h2>
+      <p><strong>Versão inicial — 01/05/2026.</strong></p>
+      <p>Este texto não tem o objetivo de apontar erro, atribuir culpa ou substituir a análise técnica da administração, do conselho, da contabilidade ou de eventual auditoria. A proposta é mais simples: facilitar a leitura dos números e ajudar os moradores a entenderem quais temas merecem acompanhamento.</p>
+      <p>Em um condomínio do porte do Costa España, despesas elevadas podem ter explicações legítimas: quantidade de áreas comuns, estrutura de pessoal, contratos de manutenção, consumo coletivo, segurança, inadimplência, emergências e obrigações legais. Justamente por isso, quanto mais didática for a apresentação desses blocos, melhor tende a ser a participação dos proprietários.</p>
+
+      <div class="callout">
+        <p><strong>Boa gestão também é comunicação.</strong><br>Quando os moradores entendem a composição das despesas, a conversa deixa de ser baseada em impressão e passa a ser baseada em prioridades, dados e decisões mais maduras.</p>
+      </div>
+
+      <h2>O que o demonstrativo permite observar</h2>
+      <p>A partir do demonstrativo analisado, a despesa ordinária mensal aparecia em torno de <strong>R$ 541.942,38</strong>. Considerando 290 unidades, isso representa uma média bruta aproximada de <strong>R$ 1.868,77 por unidade/mês</strong>. Essa média é apenas uma referência geral, porque cada unidade pode ter fração ideal diferente.</p>
+
+      <div class="cards">
+        <div class="metric">
+          <strong>R$ 541,9 mil</strong>
+          <span>despesa ordinária aproximada do mês analisado</span>
+        </div>
+        <div class="metric">
+          <strong>290 unidades</strong>
+          <span>base geral do condomínio residencial</span>
+        </div>
+        <div class="metric">
+          <strong>R$ 1.868</strong>
+          <span>média bruta aproximada por unidade, antes de fração ideal</span>
+        </div>
+      </div>
+
+      <p>O objetivo não é dizer que esse número é “certo” ou “errado”. O ponto é que ele mostra a dimensão da operação e ajuda a identificar quais assuntos têm maior impacto na vida financeira do condomínio.</p>
+
+      <h2>Temas que merecem destaque</h2>
+      <p>Alguns blocos concentram boa parte da despesa e, por isso, podem se tornar pautas muito úteis para assembleias, comunicados e estudos internos.</p>
+
+      <h2>1. Água</h2>
+      <p>A água merece atenção especial porque combina três fatores: valor relevante, consumo coletivo e dificuldade de identificar exatamente onde está o maior uso.</p>
+      <p>No demonstrativo analisado, a despesa de água aparecia em torno de <strong>R$ 88.616,76</strong>. Dividindo esse valor por 290 unidades, chega-se a uma média bruta aproximada de <strong>R$ 305,57 por unidade</strong>. Essa conta não significa que cada unidade consuma isso, mas ajuda a dar ordem de grandeza ao tema.</p>
+      <p>Além do consumo dos apartamentos, existem áreas comuns, irrigação dos jardins, piscina, limpeza, eventuais vazamentos e usos operacionais. Por isso, uma pauta interessante não precisa começar pela individualização total. Pode começar por algo mais objetivo: entender melhor os pontos de consumo.</p>
+
+      <div class="question">
+        <strong>Pauta construtiva possível</strong>
+        Estudo de setorização da água: áreas comuns, irrigação, piscina, limpeza, pontos técnicos e consumo residencial.
+      </div>
+
+      <h2>2. Pessoal</h2>
+      <p>A despesa com pessoal é naturalmente uma das mais importantes em condomínios grandes. Isso pode envolver portaria, limpeza, manutenção, supervisão, encargos trabalhistas, benefícios, férias, substituições e horas extras.</p>
+      <p>A pauta aqui não precisa ser “cortar pessoas” ou “terceirizar tudo”. Uma abordagem mais madura seria entender o desenho da operação: quantas pessoas existem, quais funções exercem, quais horários cobrem, onde há sobreposição, onde há gargalo e quais indicadores poderiam ser acompanhados.</p>
+
+      <div class="question">
+        <strong>Pauta construtiva possível</strong>
+        Apresentação didática da estrutura operacional: equipes, turnos, funções, horas extras, custos recorrentes e pontos de melhoria.
+      </div>
+
+      <h2>3. Serviços de terceiros e contratos</h2>
+      <p>Contratos de manutenção, serviços técnicos, segurança, sistemas, elevadores, equipamentos e fornecedores são parte normal da vida condominial. O ponto relevante é que esses contratos sejam compreensíveis para os proprietários.</p>
+      <p>Uma boa prática seria apresentar periodicamente uma visão resumida dos contratos: fornecedor, escopo, valor mensal, data de reajuste, prazo de vigência e responsável pelo acompanhamento.</p>
+
+      <div class="question">
+        <strong>Pauta construtiva possível</strong>
+        Quadro anual de contratos vigentes, com escopo, valores, reajustes e datas de renovação.
+      </div>
+
+      <h2>4. Manutenção preventiva</h2>
+      <p>Manutenção pode parecer apenas despesa, mas muitas vezes é economia futura. O problema é quando os moradores não conseguem distinguir o que é preventivo, corretivo, emergencial ou melhoria.</p>
+      <p>Um cronograma visual de manutenção ajudaria bastante: elevadores, bombas, hidráulica, elétrica, piscina, segurança eletrônica, CFTV, portões, jardins e áreas comuns.</p>
+
+      <div class="question">
+        <strong>Pauta construtiva possível</strong>
+        Calendário de manutenção preventiva e relatório simples do que foi feito, do que está pendente e do que exige investimento.
+      </div>
+
+      <h2>5. Receita, inadimplência e equilíbrio mensal</h2>
+      <p>A comparação entre receitas e despesas precisa ser comunicada com clareza. Se existe diferença entre arrecadação e despesa em determinado mês, isso pode ter muitas explicações: inadimplência, uso de saldo anterior, lançamentos de competência diferente, despesas extraordinárias ou pagamentos pontuais.</p>
+      <p>O importante é que os proprietários entendam o quadro geral sem precisar decifrar demonstrativos técnicos.</p>
+
+      <div class="question">
+        <strong>Pauta construtiva possível</strong>
+        Relatório mensal simplificado: arrecadação prevista, arrecadação realizada, inadimplência, despesas ordinárias e saldo.
+      </div>
+
+      <h2>Como transformar números em boas assembleias</h2>
+      <p>Uma assembleia produtiva não precisa partir de acusações. Ela pode partir de perguntas bem formuladas:</p>
+      <ul>
+        <li>Quais são os três maiores blocos de despesa do condomínio?</li>
+        <li>Quais deles têm maior possibilidade de controle ou melhoria?</li>
+        <li>O que depende de estudo técnico?</li>
+        <li>O que depende de decisão de assembleia?</li>
+        <li>O que pode ser melhorado apenas com comunicação, processo e acompanhamento?</li>
+      </ul>
+
+      <h2>Conclusão</h2>
+      <p>A leitura preliminar das despesas mostra que o Costa España é uma operação complexa e relevante. Isso, por si só, justifica uma comunicação financeira mais simples, visual e acessível aos proprietários.</p>
+      <p>O objetivo não deve ser transformar a discussão financeira em disputa, mas em gestão: entender os números, priorizar pautas, acompanhar contratos, medir consumo, planejar manutenção e decidir com mais clareza.</p>
+
+      <div class="callout">
+        <p>Quando a informação financeira fica mais clara, a gestão ganha respaldo, os moradores participam melhor e o condomínio toma decisões com menos ruído.</p>
+      </div>
+
+      <div class="note">
+        Este material é apenas uma leitura preliminar e didática. Qualquer conclusão técnica depende de análise completa dos documentos contábeis, contratos, balancetes, inadimplência, atas e demonstrativos oficiais.
+      </div>
+    </article>
+  </main>
+
+  <footer class="shell">
+    Portal colaborativo criado por iniciativa de morador. Conteúdo informativo e propositivo.
+  </footer>
+</body>
+</html>
