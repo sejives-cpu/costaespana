@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Costa España</title>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --surface: rgba(255,255,255,.72);
+      --surface-solid: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(0,0,0,.08);
+      --deep: #0f2f3a;
+      --blue: #0a84ff;
+      --blue-soft: #eaf4ff;
+      --green: #2f6f4e;
+      --green-soft: #edf7f1;
+      --amber: #9a5b1d;
+      --amber-soft: #fff4e5;
+      --red: #a13b2b;
+      --red-soft: #fff0ed;
+      --shadow: 0 20px 60px rgba(0,0,0,.08);
+      --shadow-soft: 0 8px 28px rgba(0,0,0,.05);
+      --radius: 28px;
+      --radius-sm: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(255,255,255,1) 0 18%, rgba(245,245,247,.96) 42%, #eef2f5 100%);
+      color: var(--text);
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(1180px, calc(100% - 44px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 24px 0 34px;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 12px;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 22px;
+      padding: 12px 14px;
+      margin-bottom: 72px;
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 999px;
+      background: rgba(255,255,255,.68);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      box-shadow: 0 10px 32px rgba(0,0,0,.06);
+    }
+
+    .brand {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .mark {
+      width: 210px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 10px 22px rgba(0,0,0,.10));
+      flex: 0 0 auto;
+    }
+
+    .mark img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .brand-copy {
+      display: none;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: .98rem;
+      letter-spacing: -.01em;
+      font-weight: 700;
+    }
+
+    .brand span {
+      display: block;
+      font-size: .82rem;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-size: .88rem;
+      font-weight: 600;
+      color: rgba(29,29,31,.78);
+      padding: 9px 12px;
+      border-radius: 999px;
+      transition: background .18s ease, color .18s ease;
+    }
+
+    nav a:hover {
+      background: rgba(0,0,0,.045);
+      color: var(--text);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 40px;
+      align-items: end;
+      padding: 16px 0 32px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 860px;
+      font-size: clamp(3.2rem, 7vw, 6.7rem);
+      line-height: .93;
+      letter-spacing: -.07em;
+      font-weight: 760;
+    }
+
+    .lead {
+      margin: 0;
+      max-width: 520px;
+      font-size: clamp(1.18rem, 1.8vw, 1.48rem);
+      color: var(--muted);
+      letter-spacing: -.025em;
+      line-height: 1.35;
+    }
+
+    .notice {
+      margin-top: 28px;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.64);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 22px;
+      color: rgba(29,29,31,.72);
+      box-shadow: var(--shadow-soft);
+      font-size: .98rem;
+    }
+
+    main { padding: 30px 0 90px; }
+
+    section { margin: 0 0 58px; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr minmax(280px, 520px);
+      align-items: end;
+      gap: 28px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.02;
+      letter-spacing: -.055em;
+      font-weight: 740;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.04rem;
+      letter-spacing: -.015em;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(255,255,255,.86);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+      min-height: 196px;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 42px rgba(0,0,0,.075);
+    }
+
+    .card h3 {
+      margin: 0 0 9px;
+      font-size: 1.18rem;
+      letter-spacing: -.03em;
+      line-height: 1.16;
+      font-weight: 720;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .98rem;
+    }
+
+    .meta {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 720;
+      color: #07569b;
+      background: var(--blue-soft);
+      letter-spacing: -.01em;
+    }
+
+    .meta.terra { color: var(--red); background: var(--red-soft); }
+    .meta.green { color: var(--green); background: var(--green-soft); }
+
+    .wide-card {
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(255,255,255,.86);
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 34px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
+
+    .visual-card {
+      overflow: hidden;
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(255,255,255,.88);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .visual-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(0,0,0,.06);
+    }
+
+    .visual-single {
+      background: rgba(0,0,0,.04);
+    }
+
+    .shot {
+      position: relative;
+      min-height: 360px;
+      overflow: hidden;
+      background: #e9e9eb;
+    }
+
+    .shot img {
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+      object-fit: cover;
+      display: block;
+      transition: transform .35s ease;
+    }
+
+    .visual-card:hover .shot img {
+      transform: scale(1.012);
+    }
+
+    .shot .label {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: .76rem;
+      font-weight: 760;
+      background: rgba(255,255,255,.76);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 8px 22px rgba(0,0,0,.08);
+    }
+
+    .visual-card .content { padding: 24px; }
+
+    .visual-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.36rem;
+      letter-spacing: -.035em;
+      line-height: 1.12;
+      font-weight: 740;
+    }
+
+    .visual-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .note-line {
+      margin-top: 14px;
+      padding: 13px 14px;
+      border-radius: 16px;
+      background: #f5f5f7;
+      color: rgba(29,29,31,.72);
+      font-size: .94rem;
+      border: 1px solid rgba(0,0,0,.04);
+    }
+
+    .documents {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .doc {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(0,0,0,.055);
+    }
+
+    .doc strong {
+      display: block;
+      margin-bottom: 4px;
+      letter-spacing: -.02em;
+    }
+
+    .doc span {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .doc .status, .doc .open {
+      white-space: nowrap;
+      font-size: .78rem;
+      font-weight: 720;
+      padding: 8px 11px;
+      border-radius: 999px;
+      text-decoration: none;
+    }
+
+    .doc .status {
+      color: var(--amber);
+      background: var(--amber-soft);
+    }
+
+    .doc .open {
+      color: #07569b;
+      background: var(--blue-soft);
+    }
+
+    .doc .open:hover { filter: brightness(.98); }
+
+    .texts { display: grid; gap: 12px; }
+
+    .text-item {
+      padding: 20px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(255,255,255,.88);
+      border-radius: 22px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.035);
+    }
+
+    .text-item h3 {
+      margin: 0 0 6px;
+      letter-spacing: -.025em;
+    }
+
+    .text-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 34px 0 48px;
+      border-top: 1px solid rgba(0,0,0,.07);
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    @media (max-width: 1080px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      .mark { width: 180px; }
+      .topbar { border-radius: 28px; align-items: flex-start; }
+    }
+
+    @media (max-width: 900px) {
+      .topbar, .hero, .section-head { display: flex; flex-direction: column; align-items: flex-start; }
+      .topbar { position: static; }
+      nav { justify-content: flex-start; }
+      .documents { grid-template-columns: 1fr; }
+      .visual-pair { grid-template-columns: 1fr; }
+      .shot, .shot img { min-height: 280px; }
+      .hero { gap: 18px; }
+    }
+
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 28px, 1180px); }
+      header { padding-top: 14px; }
+      h1 { font-size: clamp(2.75rem, 14vw, 4.6rem); }
+      h2 { font-size: clamp(2rem, 10vw, 3rem); }
+      .lead { font-size: 1.1rem; }
+      .mark { width: 158px; }
+      nav a { font-size: .84rem; padding: 8px 10px; }
+      .grid { grid-template-columns: 1fr; }
+      .card { min-height: auto; }
+      .doc { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell">
+      <div class="topbar">
+        <div class="brand">
+          <div class="mark">
+            <img src="imagens/logo-costa-espana.png" alt="Costa España" />
+          </div>
+          <div>
+            <strong>Portal Costa España</strong>
+            <span>Iniciativa colaborativa dos moradores</span>
+          </div>
+        </div>
+
+        <nav aria-label="Navegação principal">
+          <a href="#pautas">Pautas em discussão</a>
+          <a href="#ideias">Ideias visuais</a>
+          <a href="#documentos">Documentos</a>
+          <a href="#textos">Textos e registros</a>
+        </nav>
+      </div>
+
+      <div class="hero">
+        <h1>Um condomínio singular merece ideias à altura.</h1>
+        <p class="lead">Ideias, dados, documentos e estudos visuais para apoiar discussões mais claras, construtivas e participativas.</p>
+      </div>
+
+      <div class="notice">
+        Este portal é uma iniciativa colaborativa de morador. Não substitui os canais oficiais da administração, não representa decisões formais e não tem caráter deliberativo. A finalidade é organizar informações, facilitar a participação e apoiar discussões construtivas.
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section id="pautas">
+      <div class="section-head">
+        <h2>Pautas em discussão</h2>
+        <p>Temas de interesse coletivo que merecem acompanhamento, organização e participação dos proprietários.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <span class="meta terra">Prioridade alta</span>
+          <h3>Água</h3>
+          <p>Conta elevada, consumo coletivo, irrigação dos jardins, possíveis vazamentos, setorização e estudo de individualização.</p>
+        </article>
+
+        <article class="card">
+          <span class="meta green">Eficiência</span>
+          <h3>Energia solar</h3>
+          <p>Possibilidade de estudo técnico e financeiro para reduzir custos de áreas comuns e melhorar a sustentabilidade do condomínio.</p>
+        </article>
+
+        <article class="card">
+          <span class="meta">Famílias</span>
+          <h3>Brinquedoteca e espaços infantis</h3>
+          <p>Discussão sobre ambientes complementares, seguros, silenciosos e bem definidos para crianças e famílias.</p>
+        </article>
+
+        <article class="card">
+          <span class="meta">Uso comum</span>
+          <h3>Salão de jogos</h3>
+          <p>Revisão de uso, mobiliário, regras e possibilidades para tornar o espaço mais útil para diferentes faixas etárias.</p>
+        </article>
+
+        <article class="card">
+          <span class="meta green">Mobilidade</span>
+          <h3>Infraestrutura para veículos elétricos</h3>
+          <p>Estudo de viabilidade para pontos de recarga, regras de uso, medição individual, segurança elétrica e impacto na garagem.</p>
+        </article>
+
+        <article class="card">
+          <span class="meta">Pets</span>
+          <h3>Espaço pet</h3>
+          <p>Possibilidade de área simples para banho, tosa higiênica, cuidados rápidos e apoio aos tutores, com higiene e regras claras.</p>
+        </article>
+
+        <article class="card">
+          <span class="meta green">Bem-estar</span>
+          <h3>Sala de autocuidado e bem-estar</h3>
+          <p>Estudo de viabilidade para serviços leves, como manicure, cabelo ou cuidados rápidos, com agendamento, higiene e regras claras.</p>
+        </article>
+
+        <article class="card">
+          <span class="meta green">Convivência</span>
+          <h3>Sala de estudo e convivência</h3>
+          <p>Organização do Piso Zero como ambiente mais funcional para leitura, estudo, espera, conversa e atividades tranquilas.</p>
+        </article>
+
+        <article class="card">
+          <span class="meta terra">Governança</span>
+          <h3>Comunicação e assembleias</h3>
+          <p>Melhoria da comunicação, maior participação dos moradores e discussão sobre formatos presenciais, híbridos ou digitais.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="ideias">
+      <div class="section-head">
+        <h2>Ideias visuais e estudos de design</h2>
+        <p>Imagens conceituais para mostrar possibilidades. Não são projetos aprovados, orçamentos ou decisões do condomínio.</p>
+      </div>
+
+      <div class="gallery">
+        <article class="visual-card">
+          <div class="visual-pair">
+            <div class="shot">
+              <img src="imagens/estudo-original.jpeg" alt="Piso Zero antes da proposta" />
+              <span class="label">Piso Zero • hoje</span>
+            </div>
+            <div class="shot">
+              <img src="imagens/estudo-proposta.jpeg" alt="Piso Zero como sala de estudo e convivência" />
+              <span class="label">Estudo visual</span>
+            </div>
+          </div>
+          <div class="content">
+            <h3>Piso Zero: sala de estudo, leitura e convivência</h3>
+            <p>O Piso Zero fica no início do prédio, antes dos corredores residenciais. A proposta visual sugere um espaço mais organizado para estudo, leitura, espera, pequenas conversas e uso multimídia controlado.</p>
+            <div class="note-line">Diretriz: preservar o caráter tranquilo do ambiente. Uma TV, por exemplo, não precisa significar ruído: pode ser usada pontualmente, com fone de ouvido ou em atividades específicas.</div>
+          </div>
+        </article>
+
+        <article class="visual-card">
+          <div class="visual-pair">
+            <div class="shot">
+              <img src="imagens/entrada-original.jpg" alt="Entrada do prédio antes da proposta" />
+              <span class="label">Entrada • hoje</span>
+            </div>
+            <div class="shot">
+              <img src="imagens/entrada-proposta.jpeg" alt="Entrada do prédio com paisagismo e iluminação" />
+              <span class="label">Estudo visual</span>
+            </div>
+          </div>
+          <div class="content">
+            <h3>Entrada: paisagismo, iluminação e acolhimento</h3>
+            <p>Estudo para valorizar a chegada do prédio com mais verde, iluminação quente, textura, madeira e uma linguagem visual mais costeira. A ideia é qualificar a primeira impressão sem transformar a entrada em área de permanência intensa.</p>
+            <div class="note-line">Diretriz: priorizar intervenções elegantes, de baixo impacto e compatíveis com a arquitetura moderna do prédio.</div>
+          </div>
+        </article>
+
+        <article class="visual-card">
+          <div class="visual-single">
+            <div class="shot">
+              <img src="imagens/portaria-proposta.jpeg" alt="Estudo visual para a portaria" />
+              <span class="label">Portaria • estudo visual</span>
+            </div>
+          </div>
+          <div class="content">
+            <h3>Portaria: referência de acabamento e presença</h3>
+            <p>Imagem conceitual para estudar linguagem de materiais, iluminação, paisagismo e presença arquitetônica. Como ainda falta a foto original correspondente, este bloco fica como referência provisória.</p>
+            <div class="note-line">Diretriz: usar a imagem como inspiração, não como proposta literal de obra.</div>
+          </div>
+        </article>
+
+        <article class="visual-card">
+          <div class="visual-pair">
+            <div class="shot">
+              <img src="imagens/menos-cinco-original.jpeg" alt="Menos Cinco antes da proposta" />
+              <span class="label">Menos Cinco • hoje</span>
+            </div>
+            <div class="shot">
+              <img src="imagens/menos-cinco-proposta.jpeg" alt="Menos Cinco como espaço infantil" />
+              <span class="label">Estudo visual</span>
+            </div>
+          </div>
+          <div class="content">
+            <h3>Menos Cinco: microespaço infantil</h3>
+            <p>O Menos Cinco fica na área da piscina. A proposta visual considera um ponto pequeno, hoje pouco aproveitado, que poderia funcionar como mais uma opção infantil — não como espaço de festa ou barulho.</p>
+            <div class="note-line">Diretriz: uso tranquilo, horários claros, responsável acompanhando, sem bola, sem música alta e com respeito aos apartamentos próximos.</div>
+          </div>
+        </article>
+
+        <article class="visual-card">
+          <div class="visual-pair">
+            <div class="shot">
+              <img src="imagens/menos-cinco-original-2.jpeg" alt="Segundo ângulo do Menos Cinco antes da proposta" />
+              <span class="label">Menos Cinco • outro ângulo</span>
+            </div>
+            <div class="shot">
+              <img src="imagens/menos-cinco-proposta-2.jpeg" alt="Segundo estudo visual para o Menos Cinco" />
+              <span class="label">Estudo visual</span>
+            </div>
+          </div>
+          <div class="content">
+            <h3>Menos Cinco: possibilidade complementar</h3>
+            <p>Outro estudo para o mesmo pavimento, reforçando que a ideia não precisa ser uma única brinquedoteca. O condomínio pode avaliar pontos complementares, menores e com regras bem definidas.</p>
+            <div class="note-line">Diretriz: distribuir usos reduz conflito. Espaços pequenos podem ajudar quando têm função clara e limites de convivência.</div>
+          </div>
+        </article>
+
+        <article class="visual-card">
+          <div class="visual-single">
+            <div class="shot">
+              <img src="imagens/zero-proposta.jpeg" alt="Piso Zero como brinquedoteca e biblioteca infantil" />
+              <span class="label">Piso Zero • alternativa visual</span>
+            </div>
+          </div>
+          <div class="content">
+            <h3>Piso Zero: alternativa infantil e biblioteca</h3>
+            <p>Estudo visual mais voltado para leitura infantil, biblioteca e permanência familiar. Como ainda falta o par original correspondente nesta seção, a imagem funciona como alternativa conceitual.</p>
+            <div class="note-line">Diretriz: qualquer uso infantil no Piso Zero precisaria preservar silêncio, organização e convivência com outros usos do ambiente.</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="documentos">
+      <div class="section-head">
+        <h2>Documentos</h2>
+        <p>Área para reunir materiais que ajudam os moradores a entender regras, processos e decisões.</p>
+      </div>
+
+      <div class="wide-card">
+        <div class="documents">
+          <div class="doc">
+            <div>
+              <strong>Regimento interno</strong>
+              <span>Documento-base para entender regras de uso, convivência, segurança, áreas comuns e penalidades.</span>
+            </div>
+            <a class="open" href="documentos/regimento-interno-costa-espana.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+          </div>
+
+          <div class="doc">
+            <div>
+              <strong>Convenção do condomínio</strong>
+              <span>Regras estruturais, partes comuns, quóruns, administração, direitos e deveres dos condôminos.</span>
+            </div>
+            <a class="open" href="documentos/convencao-costa-espana.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+          </div>
+
+          <div class="doc">
+            <div>
+              <strong>Atas e comunicados</strong>
+              <span>Registros públicos ou materiais compartilhados oficialmente.</span>
+            </div>
+            <span class="status">Em organização</span>
+          </div>
+
+          <div class="doc">
+            <div>
+              <strong>Estudos e levantamentos</strong>
+              <span>Resumo de reuniões, estudos financeiros e materiais de apoio.</span>
+            </div>
+            <span class="status">Em construção</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="textos">
+      <div class="section-head">
+        <h2>Textos e registros</h2>
+        <p>Espaço para organizar mensagens, resumos e reflexões já compartilhadas ou em preparação.</p>
+      </div>
+
+      <div class="texts">
+        <article class="text-item">
+          <h3>Resumo da reunião sobre espaços infantis</h3>
+          <p>Registro organizado dos principais pontos tratados: espaços possíveis, dificuldades regimentais, comissão de pais e próximos passos.</p>
+        </article>
+
+        <article class="text-item">
+          <h3>Leitura preliminar das despesas do condomínio</h3>
+          <p>Material didático para entender os principais blocos da conta: água, pessoal, contratos, manutenção e prioridades.</p>
+        </article>
+
+        <article class="text-item">
+          <h3>Propostas de melhoria de comunicação</h3>
+          <p>Ideias para tornar os comunicados mais claros, reduzir ruído e ampliar a participação dos moradores.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      Portal colaborativo criado por iniciativa de morador. As informações aqui reunidas têm caráter informativo e propositivo. Qualquer decisão formal depende dos canais oficiais da administração, da convenção, do regimento interno e, quando aplicável, de assembleia.
+    </div>
+  </footer>
+</body>
+</html>
