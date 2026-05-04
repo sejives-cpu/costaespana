@@ -1,1 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rede de indicações dos moradores</title>
+  <style>
+    :root {
+      --bg: #f5f5f7;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --line: rgba(0,0,0,.08);
+      --blue-soft: #eaf4ff;
+      --shadow: 0 20px 60px rgba(0,0,0,.08);
+      --shadow-soft: 0 8px 28px rgba(0,0,0,.05);
+      --radius: 28px;
+    }
 
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(circle at 50% -10%, rgba(255,255,255,1) 0 18%, rgba(245,245,247,.96) 42%, #eef2f5 100%);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+
+    .shell {
+      width: min(980px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 38px 0 72px;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      color: #07569b;
+      background: var(--blue-soft);
+      font-size: .86rem;
+      font-weight: 760;
+      padding: 9px 13px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+    }
+
+    .hero, .section {
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(24px, 5vw, 52px);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.2rem, 6vw, 4.6rem);
+      line-height: .98;
+      letter-spacing: -.06em;
+      font-weight: 760;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.45rem, 3vw, 2.2rem);
+      line-height: 1.12;
+      letter-spacing: -.04em;
+    }
+
+    .intro {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1.08rem, 2vw, 1.28rem);
+      letter-spacing: -.02em;
+      line-height: 1.4;
+    }
+
+    p { margin: 0 0 14px; }
+
+    .notice {
+      margin-top: 22px;
+      padding: 18px 20px;
+      border-radius: 22px;
+      background: rgba(245,245,247,.9);
+      border: 1px solid var(--line);
+      color: rgba(29,29,31,.82);
+      font-size: .98rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .category, .contact {
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(0,0,0,.055);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .category strong, .contact strong {
+      display: block;
+      margin-bottom: 6px;
+      letter-spacing: -.025em;
+    }
+
+    .category span, .contact span {
+      display: block;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .template {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .field {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(245,245,247,.86);
+      border: 1px solid var(--line);
+      color: rgba(29,29,31,.82);
+    }
+
+    .field strong { margin-right: 6px; }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <a class="back" href="../index.html#utilidades">Voltar ao portal</a>
+
+    <section class="hero">
+      <h1>Rede de indicações dos moradores</h1>
+      <p class="intro">Uma lista colaborativa de contatos úteis para serviços, conveniência e necessidades frequentes de quem mora no Costa España.</p>
+
+      <div class="notice">
+        Esta lista tem caráter colaborativo e informativo. Os contatos não representam recomendação oficial do condomínio, da administração ou do portal. Cada contratação deve ser feita diretamente entre morador e prestador, com livre negociação de preço, prazo, garantia e responsabilidade pelo serviço.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Categorias iniciais</h2>
+      <div class="grid">
+        <div class="category"><strong>Casa e manutenção</strong><span>Encanador, eletricista, chaveiro, marceneiro, vidraceiro, ar-condicionado, redes de proteção, pintura e pequenos reparos.</span></div>
+        <div class="category"><strong>Limpeza e conservação</strong><span>Limpeza de sofá, colchão, cortina, diarista, impermeabilização, dedetização e limpeza pós-obra.</span></div>
+        <div class="category"><strong>Comida e conveniência</strong><span>Delivery de comida, bebida, mercado, hortifruti, padaria, congelados, marmitas e serviços rápidos do bairro.</span></div>
+        <div class="category"><strong>Imóvel e decoração</strong><span>Arquiteto, designer de interiores, corretor de imóveis, fotógrafo imobiliário, empresa de reforma e móveis planejados.</span></div>
+        <div class="category"><strong>Serviços profissionais</strong><span>Despachante, contador, advogado, seguro, cartório, assistência técnica e consultorias úteis.</span></div>
+        <div class="category"><strong>Bem-estar e rotina</strong><span>Personal trainer, fisioterapeuta, massagista, manicure, cabeleireiro, cuidador, dog walker, banho e tosa.</span></div>
+        <div class="category"><strong>Transporte e logística</strong><span>Frete pequeno, motorista, transfer aeroporto, mudança, motoboy e entregas rápidas.</span></div>
+        <div class="category"><strong>Outros contatos úteis</strong><span>Espaço para serviços que não se encaixem nas categorias acima, mas que possam ajudar moradores no dia a dia.</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Modelo de cadastro</h2>
+      <p>Para manter a lista organizada, cada indicação pode seguir um padrão simples:</p>
+      <div class="template">
+        <div class="field"><strong>Nome ou empresa:</strong> ainda não informado</div>
+        <div class="field"><strong>Categoria:</strong> ainda não informado</div>
+        <div class="field"><strong>Contato / WhatsApp:</strong> ainda não informado</div>
+        <div class="field"><strong>Indicado por:</strong> somente se a pessoa autorizar</div>
+        <div class="field"><strong>Já atendeu no Costa España?</strong> sim, não ou não informado</div>
+        <div class="field"><strong>Observação curta:</strong> tipo de serviço realizado, qualidade percebida ou cuidado importante</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Contatos cadastrados</h2>
+      <p>Esta área ainda está em construção. A proposta é começar de forma simples, com indicações recebidas dos moradores, e ir organizando os contatos aos poucos.</p>
+
+      <div class="contact">
+        <strong>Wellington Barros Oliveira</strong>
+        <span><strong>Categoria:</strong> Estofador de sofás e poltronas</span>
+        <span><strong>Contato / WhatsApp:</strong> <a href="https://wa.me/5571986907263" target="_blank" rel="noopener">71 98690-7263</a></span>
+        <span><strong>Indicado por:</strong> informação não publicada</span>
+        <span><strong>Já atendeu no Costa España?</strong> não informado</span>
+        <span><strong>Observação:</strong> contato inicial cadastrado como exemplo para organizar a rede de indicações dos moradores.</span>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
